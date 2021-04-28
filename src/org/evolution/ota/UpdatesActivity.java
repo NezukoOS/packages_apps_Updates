@@ -82,7 +82,6 @@ public class UpdatesActivity extends UpdatesListActivity {
 
     private boolean isUpdateAvailable = false;
 
-    private ProgressBar progressBar;
     private Button checkUpdateButton;
     private TextView updateStatus;
     private TextView androidVersion;
@@ -125,7 +124,6 @@ public class UpdatesActivity extends UpdatesListActivity {
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         LastUpdateCheck = sharedPref.getString("LastUpdateCheck", "Not checked");
 
-        progressBar = findViewById(R.id.progress_bar);
         checkUpdateButton = findViewById(R.id.check_updates);
         updateStatus = findViewById(R.id.no_new_updates_view);
         androidVersion = findViewById(R.id.android_version);
@@ -149,7 +147,6 @@ public class UpdatesActivity extends UpdatesListActivity {
         lastUpdateCheck.setText(String.format(getResources()
                 .getString(R.string.last_successful_check_for_update), LastUpdateCheck));
         checkUpdateButton.setOnClickListener(view -> {
-            progressBar.setVisibility(View.VISIBLE);
             checkUpdateButton.setVisibility(View.GONE);
             securityVersion.setVisibility(View.GONE);
             lastUpdateCheck.setVisibility(View.GONE);
@@ -272,12 +269,12 @@ public class UpdatesActivity extends UpdatesListActivity {
         updateStatus.setText(getResources().getString(R.string.list_no_updates));
 
         findViewById(R.id.recycler_view).setVisibility(View.GONE);
-        androidVersion.setVisibility(View.VISIBLE);
-        evolutionDevice.setVisibility(View.VISIBLE);
-        evolutionMaintainer.setVisibility(View.VISIBLE);
-        evolutionVersion.setVisibility(View.VISIBLE);
-        securityVersion.setVisibility(View.VISIBLE);
-        lastUpdateCheck.setVisibility(View.VISIBLE);
+        androidVersion.setVisibility(View.GONE);
+        evolutionDevice.setVisibility(View.GONE);
+        evolutionMaintainer.setVisibility(View.GONE);
+        evolutionVersion.setVisibility(View.GONE);
+        securityVersion.setVisibility(View.GONE);
+        lastUpdateCheck.setVisibility(View.GONE);
     }
 
     private void showUpdates() {
@@ -291,7 +288,7 @@ public class UpdatesActivity extends UpdatesListActivity {
         evolutionMaintainer.setVisibility(View.GONE);
         evolutionVersion.setVisibility(View.GONE);
         securityVersion.setVisibility(View.GONE);
-        lastUpdateCheck.setVisibility(View.GONE);
+        lastUpdateCheck.setVisibility(View.VISIBLE);
 
         checkUpdateButton.setVisibility(View.GONE);
     }
@@ -444,7 +441,6 @@ public class UpdatesActivity extends UpdatesListActivity {
     }
 
     private void refreshAnimationStart() {
-        progressBar.setVisibility(View.VISIBLE);
         checkUpdateButton.setVisibility(View.GONE);
         securityVersion.setVisibility(View.GONE);
         lastUpdateCheck.setVisibility(View.GONE);
@@ -464,7 +460,6 @@ public class UpdatesActivity extends UpdatesListActivity {
     }
 
     private void refreshAnimationStop() {
-        progressBar.setVisibility(View.GONE);
         checkUpdateButton.setVisibility(View.VISIBLE);
         if (isUpdateAvailable) {
             showUpdates();

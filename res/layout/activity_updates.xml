@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:visibility="visible"
         app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
@@ -23,7 +24,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
+        android:gravity="center"
         android:orientation="vertical">
 
         <ImageView
@@ -53,8 +54,8 @@
             android:id="@+id/last_update_check"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:gravity="start"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
             android:visibility="visible"
             android:paddingStart="24dp"
             android:paddingTop="5dp"
@@ -154,7 +155,7 @@
         android:id="@+id/check_updates"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
+        android:layout_gravity="start|bottom"
         android:layout_margin="16dp"
         android:background="@drawable/roundedbutton"
         android:paddingStart="16dp"
